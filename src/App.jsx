@@ -87,9 +87,8 @@ const PuppyClick = (puppy) => {
           ))}
         </ul>
         {selectedPuppy && <PuppyDetails puppy={selectedPuppy} />}
-      </>
+    </>
     )
-  }
+  };
 
 export default App
-  
