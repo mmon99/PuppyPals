@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PuppyDetails from './PuppyDetails.jsx'; 
 
 const App = () => {
   const [puppies, setPuppies] = useState([
@@ -69,17 +70,26 @@ const App = () => {
     },
   ]);
 
+const [selectedPuppy, setSelectedPuppy] = useState ();
+
+const PuppyClick = (puppy) => {
+  setSelectedPuppy (puppy);
+  };
+  
   return (
-    <>
-      <h1>Puppy Pals</h1>
-      {
-        puppies.map((puppy) => {
-          return <li key={puppy.id}>{puppy.name}</li>;
-        })
-      }
-    </>
-  )
-}
+   <>
+    <h1>Puppy Pals</h1>
+      <ul>
+        {puppies.map((puppy) => (
+            <li key={puppy.id} onClick={() => PuppyClick(puppy)}>
+              {puppy.name}
+            </li>
+          ))}
+        </ul>
+        {selectedPuppy && <PuppyDetails puppy={selectedPuppy} />}
+      </>
+    )
+  }
 
 export default App
-
+  
